@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 网格</title>
+    <link rel="stylesheet" href="/Bootstrap/public/bs/css/bootstrap.min.css">
+    <script src="/Bootstrap/public/bs/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body{
+            background: url("/Bootstrap/img/yifu.jpg") no-repeat center center fixed;
+                    /*兼容浏览器版本*/
+                    -webkit-background-size: cover;
+                    -o-background-size: cover;                
+                    background-size: cover;
+        }
+        .native-text-shadow {
+        text-shadow: 0 0 8px #32003C ; 
+        }
+        .Error{
+            color: red;
+            display: none;
+        }
+        </style>
+</head>
+<body>
+    <div class="shadow-lg fixed-top" style="background-color:#45a1c4;width:100%;">
+        <div class="row" style="height:1.4cm">
+            <div class="col-sm-6 col-md-8 col-lg-9 col-xl-9"> 
+                <div class="ps-1 text- fw-bold" style="margin-top: 6px;">
+                    <img class="img-fluid"style="width:4%;" src="/Bootstrap/img/Small_horizontal_logo.png">
+                    GodFather Association
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="mt-2 mb-1 me-2 text-white">
+                    <button class="btn border-0 text-white btn-outline-success fw-bold">首页</button>&nbsp;&nbsp;
+                    <button class="btn border-0 text-white btn-outline-success fw-bold">今日热点</button>&nbsp;&nbsp;
+                    <button class="btn border-0 text-white btn-outline-success fw-bold">加入我们</button>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <section id="intro">
+        <div class="container-lg">
+            <div class="row p-2">
+                <div class="col-md-7   text-center text-md-start" style="margin-top: 160px;">
+                    <h1>
+                        <div class="display-2 text-white fw-bold native-text-shadow">
+                            欢迎来到GFA 
+                        </div>
+                        <div class="display-5 text-white fw-bold native-text-shadow">
+                            Exploring and chasing your dream !
+                        </div>
+                    </h1>                    
+                </div>
+                <div class="col-md-4 justify-content-center " style="margin-top:100px;">
+                    <div class="card" style="width:110%;">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active fw-bold text-success" id="sign_up-tab" data-bs-toggle="tab" data-bs-target="#sign_in" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                      登录
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link fw-bold text-success" id="sign_in-tab" data-bs-toggle="tab" data-bs-target="#sign_up" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                      注册
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <!-- 登录界面 -->
+                                <div class="tab-pane fade show active" id="sign_in" role="tabpanel" aria-labelledby="sign_in-tab">
+                                    <form method="post" action="http://localhost/php_scripts/sign_in_check.php">
+                                    <div class="input-group input-group-lg mx-1 my-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping">学号/用户名</span>
+                                        <input type="text" name="uid" class="form-control" placeholder="输入用户名或学号" aria-label="UID" aria-describedby="addon-wrapping" maxlength="12">
+                                    </div>
+                                    <div class="input-group input-group-lg mx-1 my-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping">密码</span>
+                                        <input type="password" name="password" class="form-control" placeholder="输入密码" aria-label="Password" aria-describedby="addon-wrapping" maxlength="16">
+                                    </div>
+                                    <div class="input-group input-group-lg mx-1 mt-4 flex-nowrap">
+                                        <span class="input-group-text" id="addon-wrapping">验证码</span>
+                                        <input type="text" name="verify_code" class="form-control" placeholder="输入验证码" aria-label="verify_code" aria-describedby="addon-wrapping" maxlength="4">
+                                        <img src="/Bootstrap/img/Small_horizontal_logo.png" alt="" style="width: 140px;height: 20px;">
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                &nbsp;
+                                            </div>
+                                            <div class="col-4 mt-2">
+                                                <input type="submit" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn border-0 my-1 mx-1 btn-outline-success btn-lg ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <!-- 注册界面 -->
+                                <div class="tab-pane fade  " id="sign_up" role="tabpanel" aria-labelledby="sign_up-tab">
+                                    <form onsubmit="return sign_up_check(this)">
+                                    <div class="input-group input-group-lg mx-1 my-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping">用户名</span>
+                                        <input type="text" class="form-control" name="username" placeholder="输入用户名" aria-label="Password" aria-describedby="addon-wrapping" maxlength="16">
+                                    </div>
+                                    
+                                    <div class="input-group input-group-lg mt-3 mx-1 ">
+                                        <input type="text" class="form-control" placeholder="学号" aria-label="email_address" aria-describedby="basic-addon2" maxlength="12">
+                                        <span class="input-group-text" id="basic-addon2">@mail.sdufe.edu.cn</span>
+                                    </div>
+                                    <div class="input-group input-group-lg mx-1 my-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping">密码</span>
+                                        <input type="password" class="form-control" name="pwd1" placeholder="输入密码" aria-label="Password" aria-describedby="addon-wrapping" maxlength="16">
+                                    </div>
+                                    <div class="input-group input-group-lg mx-1 my-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping">密码</span>
+                                        <input type="password" class="form-control" name="pwd2" placeholder="再次输入密码" aria-label="Password" aria-describedby="addon-wrapping" maxlength="16">
+                                    </div>
+                                    <div class="Error" id="pwdErr_incorrect">两次输入密码不一致！</div>
+                                    <div class="Error" id="pwdErr_none">密码不能为空！</div>
+                                    <div class="input-group input-group-lg mx-1 mt-4 flex-nowrap ">
+                                        <span class="input-group-text" id="addon-wrapping"><button id = "verify_email" class="btn border-0 btn-none fw-bold text-success ">获取验证码</button></span>
+                                        <input type="text" class="form-control" name="verify_code" placeholder="输入验证码" aria-label="verify_code" aria-describedby="addon-wrapping" maxlength="6">
+                                    </div>
+                                    <div id="verErr"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                &nbsp;
+                                            </div>
+                                            <div class="col-4 mt-2">
+                                                <button type="submit" id="sign_up" onclick="verify_email()" class="btn border-0 my-1 mx-1 btn-outline-success btn-lg ">&nbsp;&nbsp;注册&nbsp;&nbsp;</button>
+                                            </div>
+                                        </div>
+                                    </div>        
+                                    </form>                            
+                                </div>
+                                <!--验证码按钮js逻辑-->
+                                <script type="text/javascript">
+                                    let ver = document.getElementById("verify_email");
+                                    num = 30;
+                                    ver.onclick = function(){
+                                        timer(ver);                                        
+                                    }
+                                    function timer(el){
+                                        if(num == 0){
+                                            el.removeAttribute("disabled");
+                                            el.innerHTML = "获取验证码";                                            
+                                            num = 30;
+                                            return ;
+                                        }else{
+                                            el.setAttribute("disabled",true);
+                                            el.innerHTML = num + "秒后再获取";                                            
+                                            num--;
+                                            
+                                        }
+                                        setTimeout(function(){
+                                                timer(el);
+                                            },1000);
+                                    }
+                                </script>
+                                <script type="text/javascript">                                
+                                    function sign_up_check(form){
+                                        //判断两次密码输入是否正确
+                                        usererror = document.getElementById("user_Error");
+                                        pwderror_incorrect = document.getElementById("pwdErr_incorrect");
+                                        pwderror_none = document.getElementById("pwdErr_none")
+                                        vererror = document.getElementById("verErr");
+                                        if(form.pwd1.value == "" || form.pwd2.value == ""){
+                                            pwderror_incorrect.style.display = "none";
+                                            pwderror_none.style.display = "block"; 
+                                        }
+                                        else if(form.pwd1.value != form.pwd2.value){
+                                            pwderror_none.style.display = "none";
+                                            pwderror_incorrect.style.display = "block";
+                                        }
+                                        else{
+                                            pwderror_incorrect.style.display = "none";
+                                            pwderror_none.style.display = "none";
+                                        }
+                                        if(form.verify_code.value == "" || form.verify_code.value != 'abcd'){
+                                            vererror.style.display = "block";
+                                        }
+                                        else{
+                                            vererror.style.display = "none";
+                                        }
+                                        return false;
+                                    }
+                                    
+                                </script>
+                                
+                                <script>
+                                    function loadXMLDoc()
+                                    {
+                                        var xmlhttp;
+                                        if (window.XMLHttpRequest)
+                                        {
+                                            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                                            xmlhttp=new XMLHttpRequest();
+                                        }
+                                        else
+                                        {
+                                            // IE6, IE5 浏览器执行代码
+                                            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                                        }
+                                        xmlhttp.onreadystatechange=function()
+                                        {
+                                            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                                            {
+                                                document.getElementById("verErr").innerHTML=xmlhttp.responseText;
+                                            }
+                                        }
+                                        xmlhttp.open("GET","/check.txt",true);
+                                        xmlhttp.send();
+                                    }
+                                    </script>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute top-100 start-50 translate-middle">
+                <div class="fw-bold text-white native-text-shadow" style="height: 80px;">&copy; GodFather Association | SDUFE </div>
+            </div>
+            
+        </div>
+        
+    </section>
+    <div class="fw-bold">
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-5">&nbsp;</div>
+            <div class="col-sm-4 col-md-6 col-lg-5 col-xl-5 bottom-50 end-50"></div>
+            <div class="col-sm-4 col-md-2 col-lg-3 col-xl-2">&nbsp;</div>
+        </div>
+        
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
